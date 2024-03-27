@@ -1,6 +1,8 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
+import { createNewUser } from '@/lib/actions/user.actions'
+import { NextResponse } from 'next/server'
  
 export async function POST(req: Request) {
  
@@ -50,9 +52,21 @@ export async function POST(req: Request) {
   // Get the ID and type
   const { id } = evt.data;
   const eventType = evt.type;
+
+  if(evt.type ==="user.created"){
+    const { email_addresses, first_name, id } = evt.data;
+    
+    const user = {
+        name:first_name,
+        email:email_addresses[0].email_address,
+        clerkId:id
+    }
+    
+    const createdUser = await createNewUser(user);
+    return NextResponse.json({ message: 'OK', user: createdUser})
+  }
  
-  console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
-  console.log('Webhook body:', body)
+ 
  
   return new Response('', { status: 200 })
 }
