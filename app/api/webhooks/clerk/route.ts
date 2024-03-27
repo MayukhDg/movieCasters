@@ -63,7 +63,7 @@ export async function POST(req: Request) {
     }
     
     const createdUser = await createNewUser(user);
-    return NextResponse.json({ message: 'OK', user: createdUser})
+    return JSON.parse(JSON.stringify(createdUser))
   }
  
  
