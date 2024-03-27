@@ -5,15 +5,16 @@ import { connectToDB } from "../mongoose";
 interface userProps {
   name:string,
   email:string,
+  clerkId:string
   
 }
 
 
-export const createNewUser = async({name, email}:userProps)=>{
+export const createNewUser = async({name, email, clerkId}:userProps)=>{
     try {
         await connectToDB();
         const newUser = await User.create({
-            name, email
+            name, email, clerkId
         })
         await newUser.save();
         return JSON.parse(JSON.stringify(newUser))
