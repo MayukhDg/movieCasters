@@ -9,16 +9,18 @@ import Auditions from '@/components/shared/Auditions';
 const Home = async() => {
   
   const user = await currentUser();
-  
+  let loggedInUser;
 
-  const loggedInUser = await fetchUserDetails(
-    {
-    name: user?.username || "User",
-    email: user?.emailAddresses[0]?.emailAddress || "",
-    clerkId:user?.id || "",
-    image: user?.imageUrl || ""
-  
-    }  ) 
+  if(user){
+    loggedInUser = await fetchUserDetails(
+      {
+      name: user?.username || "User",
+      email: user?.emailAddresses[0]?.emailAddress || "",
+      clerkId:user?.id || "",
+      image: user?.imageUrl || ""
+    
+      }  ) 
+  }
 
 
   
