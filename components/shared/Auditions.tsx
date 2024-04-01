@@ -1,12 +1,13 @@
+import { fetchAllAuditions } from '@/lib/actions/audition.actions';
 import AuditionCard from './AuditionCard';
 import { auditionProps } from '@/types';
 
 
 
 
-const Auditions = async({auditions}:any) => {
+const Auditions = async() => {
+  const auditions = await fetchAllAuditions();   
    
- 
 
     return (
     <div className='flex flex-wrap w-full items-center gap-5' >
