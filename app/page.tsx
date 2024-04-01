@@ -38,7 +38,6 @@ const Home = async() => {
       <SignedOut>
       <div className='flex-col gap-4 flex'>
         <h3>Check out the latest auditions happening near you</h3>
-        <Auditions/>
       </div>
       </SignedOut>
      
