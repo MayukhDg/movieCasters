@@ -10,16 +10,7 @@ const Home = async() => {
   
   const user = await currentUser();
  
-  const loggedInUser = await fetchUserDetails(
-      {
-      name: user?.username || "User",
-      email: user?.emailAddresses[0]?.emailAddress || "",
-      clerkId:user?.id || "",
-      image: user?.imageUrl || ""
-    
-      }  ) 
-  
-
+ 
 
   
 
@@ -27,8 +18,8 @@ const Home = async() => {
     <section className='px-5'>
       <SignedIn>
       <div className='flex-col gap-4 flex'>
-       <h2>Welcome {loggedInUser?.name}</h2>
-       <ProfileButton id={loggedInUser?._id} />
+       <h2>Welcome {user?.id }</h2>
+       <ProfileButton id={JSON.stringify(user?.id) } />
        <Auditions />
        </div>
        </SignedIn>

@@ -26,6 +26,20 @@ export const fetchUserDetails = async({name, email, clerkId, image}:userProps)=>
 }
 
 
+export const createUser = async({name, email, clerkId, image}:userProps)=>{
+   try {
+     await connectToDB();
+     const newUser = await User.create({
+      name, email, clerkId, image
+  })
+  await newUser.save();
+  return JSON.parse(JSON.stringify(newUser))
+   } catch (error) {
+    console.log(error)
+   }
+}
+
+
 export const fetchUser = async(clerkId:string)=>{
    try {
     await connectToDB();
