@@ -1,37 +1,16 @@
 import React from 'react'
-import { currentUser, SignedIn, SignedOut } from "@clerk/nextjs";
-import { fetchUserDetails } from '@/lib/actions/user.actions';
-import ProfileButton from '@/components/shared/ProfileButton';
-import Auditions from '@/components/shared/Auditions';
 
 
 
-const Home = async() => {
-  
-  const user = await currentUser();
- 
+const Home = () => {
  
 
-  
-
-  return (
+return (
     <section className='px-5'>
-      <SignedIn>
-      <div className='flex-col gap-4 flex'>
-       <h2>Welcome {user?.id }</h2>
-       <ProfileButton id={JSON.stringify(user?.id) } />
-       <Auditions />
-       </div>
-       </SignedIn>
-        <SignedOut>
       <div className='flex-col gap-4 flex'>
         <h3>Check out the latest auditions happening near you</h3>
-        <Auditions/>
       </div>
-      </SignedOut>
-     
-    
-    </section>
+     </section>
   )
 }
 

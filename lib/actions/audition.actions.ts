@@ -43,11 +43,7 @@ export const deleteAudition = async({auditionId, userId}:{auditionId:string, use
 export const fetchAllAuditions = async()=>{
    try {
       await connectToDB();
-      const allAuditions = await Audition.find({}).populate({
-         path:"creator",
-         model:User
-      }).sort({
-         createdAt:"desc"})
+      const allAuditions = await Audition.find({})
       return JSON.parse(JSON.stringify(allAuditions))
    } catch (error) {
      console.log(error)    
