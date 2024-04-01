@@ -1,14 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { currentUser } from '@clerk/nextjs';
+import Auditions from '@/components/shared/Auditions';
 
 
 
-const Home = () => {
+const Home = async() => {
  
+  const user = await currentUser();
 
 return (
     <section className='px-5'>
       <div className='flex-col gap-4 flex'>
-        <h3>Check out the latest auditions happening near you</h3>
+        <h3>Welcome {user?.id}</h3>
+        <Auditions/>
       </div>
      </section>
   )
