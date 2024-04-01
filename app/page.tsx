@@ -9,10 +9,8 @@ import Auditions from '@/components/shared/Auditions';
 const Home = async() => {
   
   const user = await currentUser();
-  let loggedInUser;
-
-  if(user){
-    loggedInUser = await fetchUserDetails(
+ 
+  const loggedInUser = await fetchUserDetails(
       {
       name: user?.username || "User",
       email: user?.emailAddresses[0]?.emailAddress || "",
@@ -20,7 +18,7 @@ const Home = async() => {
       image: user?.imageUrl || ""
     
       }  ) 
-  }
+  
 
 
   
@@ -34,10 +32,10 @@ const Home = async() => {
        <Auditions />
        </div>
        </SignedIn>
-        
-      <SignedOut>
+        <SignedOut>
       <div className='flex-col gap-4 flex'>
         <h3>Check out the latest auditions happening near you</h3>
+        <Auditions/>
       </div>
       </SignedOut>
      

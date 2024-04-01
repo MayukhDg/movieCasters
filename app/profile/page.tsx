@@ -7,7 +7,6 @@ const page = async() => {
   
   const user = await currentUser();
  const userDetails = await fetchUser(user?.id || "")
- console.log(userDetails)
     
  return (
     <div>

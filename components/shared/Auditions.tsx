@@ -7,7 +7,7 @@ import AuditionCard from './AuditionCard';
 const Auditions = async() => {
    
   const auditions = await fetchAllAuditions();
-    
+
     return (
     <div className='flex flex-wrap w-full items-center gap-5' >
      { auditions.map((item:any)=>(
