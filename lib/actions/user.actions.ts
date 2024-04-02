@@ -8,17 +8,21 @@ import { userProps } from "@/types";
 
 
 
-export const createUser = async({name, email, clerkId, image}:userProps)=>{
-   try {
-     await connectToDB();
-     const newUser = await User.create({
-      name, email, clerkId, image
-  })
-  await newUser.save();
-  return JSON.parse(JSON.stringify(newUser))
-   } catch (error) {
-    console.log(error)
-   }
+
+
+export const updateUser = async({userName, email, clerkId, image}:userProps)=>{
+    try {
+      await connectToDB();
+      const newUser = await User.findOneAndUpdate({clerkId}, {
+        name:userName, email, clerkId, image
+      },
+      {upsert:true, new:true},
+      
+      )
+      return JSON.parse(JSON.stringify(newUser))  
+    } catch (error) {
+      console.log(error);
+    }
 }
 
 
@@ -37,23 +41,4 @@ export const fetchUser = async(clerkId:string)=>{
    } catch (error) {
      console.log(error)
    }
-}
-
-
-
-export const fetchUserFromDb = async(id:string)=>{
-  try {
-   await connectToDB();
-   const user = await User.findById({id}).populate({
-     path:"createdAuditions",
-     model:Audition,
-     populate:[{
-       path:"creator",
-       model:User
-     }] 
-   })
-    return JSON.parse(JSON.stringify(user));
-  } catch (error) {
-    console.log(error)
-  }
 }
