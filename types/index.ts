@@ -21,12 +21,13 @@ export interface userProps {
 
 
 
-  export interface SessionInterface extends Session {
-    user: User & {
-      id: string;
-      name: string;
-      email: string;
-      image: string;
-    };
+  export interface SessionInterface{
+    user: {
+      name: string
+      email: string
+      image: string
+      id:string
+    },
+    expires: string
   }
 
