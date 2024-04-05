@@ -1,7 +1,6 @@
 export interface userProps {
     userName:string,
     email:string,
-    clerkId:string,
     image:string
     
   }

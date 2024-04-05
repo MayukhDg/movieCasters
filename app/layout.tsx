@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google'
-import { ClerkProvider } from '@clerk/nextjs'
+import Provider from "@/components/shared/Provider";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 
@@ -17,20 +17,22 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-  children,
+  children, session
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode, session:any;
 }>) 
 {
   return (
-    <ClerkProvider>
+   
      <html lang="en">
+      <Provider session={session} >
       <body className={roboto.className}>
         <Navbar/>
         {children}
         </body>
-    </html>
-    </ClerkProvider>
+   </Provider>
+          </html>
+   
     
   );
 }

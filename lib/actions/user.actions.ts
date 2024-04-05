@@ -10,11 +10,11 @@ import { userProps } from "@/types";
 
 
 
-export const updateUser = async({userName, email, clerkId, image}:userProps)=>{
+export const updateUser = async({userName, email, image}:userProps)=>{
     try {
       await connectToDB();
-      const newUser = await User.findOneAndUpdate({clerkId}, {
-        name:userName, email, clerkId, image
+      const newUser = await User.findOneAndUpdate({email}, {
+       email, userName, image
       },
       {upsert:true, new:true},
       
