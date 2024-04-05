@@ -14,9 +14,6 @@ const Navbar = () => {
 
     return (
     <nav className='flex justify-between items-center p-5'>
-    <SignedOut>
-    <Button onClick={()=>router.push("/sign-in")} variant={"secondary"}>Sign In</Button> 
-    </SignedOut>
     <SignedIn>
     <UserButton/>
     <Button onClick={()=>router.push("/create-audition")} variant={"secondary"}>Create Audition</Button>   
