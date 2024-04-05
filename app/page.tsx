@@ -1,20 +1,16 @@
 import React from 'react';
-import { currentUser, useAuth } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs';
 import Auditions from '@/components/shared/Auditions';
 import { updateUser } from '@/lib/actions/user.actions';
 import { redirect } from 'next/navigation'
+import { useAuth } from '@clerk/clerk-react';
 
 
 
 const Home = async() => {
  
   const user = await currentUser();
-  const { isLoaded } = useAuth();
-
-  if(isLoaded){
-    redirect("/")
-  }
-
+  
 
   const loggedInUser = await updateUser({
     userName: user?.username || "", 
