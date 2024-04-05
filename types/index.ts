@@ -26,7 +26,6 @@ export interface userProps {
       name: string
       email: string
       image: string
-      id:string
     },
     expires: string
   }
