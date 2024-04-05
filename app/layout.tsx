@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google'
 import Provider from "@/components/shared/Provider";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
+import { SessionInterface } from "@/types";
 
  const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"], 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children, session
 }: Readonly<{
-  children: React.ReactNode, session:any;
+  children: React.ReactNode, session:SessionInterface;
 }>) 
 {
   return (

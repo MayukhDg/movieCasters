@@ -1,3 +1,5 @@
+import { User, Session } from 'next-auth'
+
 export interface userProps {
     userName:string,
     email:string,
@@ -16,3 +18,15 @@ export interface userProps {
    city:string
    title:string
   }
+
+
+
+  export interface SessionInterface extends Session {
+    user: User & {
+      id: string;
+      name: string;
+      email: string;
+      image: string;
+    };
+  }
+
