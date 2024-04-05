@@ -16,7 +16,10 @@ const Navbar = () => {
     <nav className='flex justify-between items-center p-5'>
     <SignedIn>
     <UserButton/>
-    <Button onClick={()=>router.push("/create-audition")} variant={"secondary"}>Create Audition</Button>   
+    <div className='flex items-center gap-3'>
+    <Button className='rounded-2xl' onClick={()=>router.push("/create-audition")} variant={"secondary"}>Create Audition</Button>
+    <Button className='rounded-2xl' onClick={()=>router.push("/latest-auditions")} variant={"secondary"}>Latest Auditions</Button> 
+      </div>     
     </SignedIn>
     </nav>
   )

@@ -7,3 +7,11 @@
 .auditionform{
     border: 1px solid black;
 }
+
+
+body{
+    background-image: url("/bg-image.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

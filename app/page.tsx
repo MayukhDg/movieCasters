@@ -10,13 +10,14 @@ import { useAuth } from '@clerk/clerk-react';
 const Home = async() => {
  
   const user = await currentUser();
-  
-
+   
+  if(!user) return null;
+ 
   const loggedInUser = await updateUser({
-    userName: user?.username || "", 
-    email:user?.emailAddresses[0].emailAddress || "", 
-    clerkId: user?.id || "", 
-    image:user?.imageUrl || ""  
+    userName: user?.username as string, 
+    email:user?.emailAddresses[0].emailAddress as string, 
+    clerkId: user?.id  as string, 
+    image:user?.imageUrl as string  
   })
 
 return (
